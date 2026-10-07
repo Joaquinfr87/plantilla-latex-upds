@@ -58,6 +58,22 @@ este repo):
 Regla: si el diagrama lo puede describir un agente en código, usar **TikZ**;
 si no, exportar **PDF vectorial** (nunca PNG a baja resolución).
 
+## Fuentes consultadas
+
+- PGF/TikZ Manual: librería `babel` (https://tikz.dev/library-babel).
+- TeX.SE: "Problem with babel and tikz using \draw", "Why do people insist
+  on using Tikz when they can use simpler drawing tools?", "Best practices
+  to include lots of tikz pictures in an Overleaf project", "TikZ
+  externalize...".
+- Overleaf docs: "Reducing the compile time for diagrams" (externalize).
+- Hacker News (Ask HN): "What do you use to create diagrams?" (draw.io,
+  Mermaid, LLM→TikZ, Excalidraw).
+- arXiv 2603.07936: "Text to Automata Diagrams: Comparing TikZ Code
+  Generation with Direct Image Synthesis" (LLMs generan TikZ desde
+  descripción de texto; prompts con ejemplo de layout mejoran resultados).
+- draw.io docs: generación de diagramas con LLMs (Mermaid/XML), exportación.
+- Medum "Ditch Draw.io": Mermaid como diagrama-como-código versionable.
+
 ## Por qué no embeber SVG directo
 
 `pdflatex` no soporta SVG sin `inkscape` y conversiones externas; el
