@@ -91,8 +91,6 @@ El PDF generado es `main.pdf`.
 
 ## Requisitos
 
-- TeX Live (o MiKTeX) con los paquetes: `babel-spanish`, `helvet`,
-  `geometry`, `setspace`, `fancyhdr`, `titlesec`, `booktabs`, `caption`,
-  `graphicx`, `tikz`, `listings`, `hyperref`, `apacite`, `tocloft`,
-  `microtype`, `enumitem`, `amsmath`.
-- `latexmk` (opcional, pero recomendado).
+Ver [`INSTALACION.md`](INSTALACION.md) para la instalación mínima en Linux
+(sin descargar los ~5 GB de TeX Live completo). Solo se necesita:
+`pdflatex`, `bibtex` y preferiblemente `latexmk`.
