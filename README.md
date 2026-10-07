@@ -1,5 +1,9 @@
 # Plantilla de informe LaTeX — UPDS
 
+[![Licencia: MIT](https://img.shields.io/badge/Licencia-MIT-yellow.svg)](LICENSE)
+[![LaTeX](https://img.shields.io/badge/LaTeX-APA%20%7C%20Arial%20%7C%20A4-blue)](README.md)
+[![CI](https://github.com/USUARIO/plantilla-latex-upds/actions/workflows/latex.yml/badge.svg)](https://github.com/USUARIO/plantilla-latex-upds/actions)
+
 Plantilla reutilizable para los informes de la Universidad Privada Domingo
 Savio (normas APA · tipografía Arial · papel A4).
 
