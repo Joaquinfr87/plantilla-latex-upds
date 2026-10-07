@@ -1,0 +1,95 @@
+% ============================================================================
+%  PLANTILLA DE INFORME — Universidad Privada Domingo Savio
+%  ----------------------------------------------------------------------------
+%  Regla de oro del proyecto:
+%    - formato/datos-institucion.sty -> datos compartidos (institución, logo)
+%    - formato/preambulo.sty         -> toda la configuración (APA + Arial)
+%    - formato/portada.tex           -> portada (datos institucionales)
+%    - formato/referencias.bib       -> bibliografía BibTeX
+%    - contenido/*.tex               -> el contenido real del informe
+%    - anexos/*.tex                  -> material complementario
+%    - main.tex                      -> integración + datos del documento
+%
+%  Compilar (desde la raíz de esta carpeta):
+%    make
+% ============================================================================
+
+\documentclass[12pt,a4paper]{article}
+
+\usepackage{formato/preambulo}
+\usepackage{formato/datos-institucion}
+
+% ============================================================================
+%  DATOS DEL DOCUMENTO  (editar aquí en cada informe)
+% ============================================================================
+\newcommand{\tituloDocumento}{[Título del informe]}
+\newcommand{\equipo}{[Nombre del equipo]}
+\newcommand{\integrantes}{%
+  [Integrante 1] \par
+  [Integrante 2] \par
+  [Integrante 3]}
+\newcommand{\asignatura}{[Asignatura]}
+\newcommand{\docente}{[Docente]}
+\newcommand{\fechaEntrega}{DD/MM/AAAA}
+
+\begin{document}
+
+\pagenumbering{roman}
+\input{formato/portada}
+
+\newpage
+{\indicesCompactos\tableofcontents}
+\newpage
+{\indicesCompactos\listoftables}
+\newpage
+{\indicesCompactos\listoffigures}
+\clearpage
+
+\pagenumbering{arabic}
+
+% --- CAPÍTULO I --------------------------------------------------------------
+\caratulaCapitulo{CAPÍTULO I}{INTRODUCCIÓN}
+\input{contenido/01-introduccion}
+
+% --- CAPÍTULO II -------------------------------------------------------------
+\caratulaCapitulo{CAPÍTULO II}{OBJETIVOS, ALCANCE Y LÍMITES}
+\input{contenido/02-objetivos}
+\input{contenido/03-alcance}
+
+% --- CAPÍTULO III ------------------------------------------------------------
+\caratulaCapitulo{CAPÍTULO III}{DESARROLLO DEL TRABAJO}
+\input{contenido/04-desarrollo}
+
+% --- CONCLUSIONES ------------------------------------------------------------
+\newpage
+\encabezadoCapitulo{CONCLUSIONES}{}
+\addcontentsline{toc}{part}{CONCLUSIONES}
+\begingroup
+\setcounter{capitulo}{4}
+\setcounter{section}{0}
+\renewcommand{\thesection}{4.}
+\renewcommand{\theHsection}{4.}
+\renewcommand{\thesubsection}{4.\arabic{subsection}}
+\renewcommand{\theHsubsection}{4.\arabic{subsection}}
+\renewcommand{\thesubsubsection}{4.\arabic{subsection}.\arabic{subsubsection}}
+\renewcommand{\theHsubsubsection}{4.\arabic{subsection}.\arabic{subsubsection}}
+\input{contenido/05-conclusiones}
+\endgroup
+
+% --- Referencias -------------------------------------------------------------
+\newpage
+\encabezadoCapitulo{REFERENCIAS}{}
+\addcontentsline{toc}{part}{REFERENCIAS}
+\bibliographystyle{apacite}
+\nocite{*}
+\bibliography{formato/referencias}
+
+% --- Anexos -------------------------------------------------------------------
+% \newpage
+% \encabezadoCapitulo{ANEXOS}{}
+% \pdfbookmark[0]{ANEXOS}{anexos}%
+% \addcontentsline{toc}{part}{ANEXOS}
+% \appendix
+% \input{anexos/anexo-a}
+
+\end{document}
