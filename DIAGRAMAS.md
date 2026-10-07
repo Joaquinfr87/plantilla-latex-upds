@@ -58,6 +58,27 @@ este repo):
 Regla: si el diagrama lo puede describir un agente en código, usar **TikZ**;
 si no, exportar **PDF vectorial** (nunca PNG a baja resolución).
 
+## Lo más importante para el agente (resumen operativo)
+
+1. **Generar TikZ inline** dentro de `\figuraAPA` (no PNG/SVG externos) para
+   diagramas que pueda describir en código: arquitectura, flujo, topología.
+2. **Plantilla base**: estilos centralizados (`nodo/.style=`, `linea/.style=`),
+   nodos con nombres cortos, flechas con `-Stealth`.
+3. **Babel fix ya aplicado**: `\usetikzlibrary{...,babel}` +
+   `\AtBeginDocument{\shorthandoff{<>}}` en el preámbulo. No quitarlo —
+   es lo que evita el error `Argument of \language@active@arg> has an
+   extra }` típico de babel-spanish + TikZ.
+4. **Compilar y corregir**: tras editar, `make`; reportar/corregir el
+   primer error del log antes de continuar.
+5. **Imágenes reales** (capturas): PNG en `figuras/` con `\capturaAPA`.
+6. **Diagramas complejos a mano**: exportar PDF desde draw.io/Excalidraw y
+   `\includegraphics`. Nunca embeber SVG en pdflatex.
+7. **Muchos TikZ**: considerar `\tikzexternalize` para acelerar (ver
+   Overleaf docs); no imprescindible en documentos chicos.
+8. Prompts detallados funcionan mejor: describir nodos, conexiones,
+   etiquetas y layout explícitamente (hallazgo del paper arXiv sobre TikZ
+   generado por LLM).
+
 ## Fuentes consultadas
 
 - PGF/TikZ Manual: librería `babel` (https://tikz.dev/library-babel).
