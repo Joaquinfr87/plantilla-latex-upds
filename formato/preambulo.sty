@@ -20,6 +20,9 @@
 
 % --- Idioma y codificación --------------------------------------------------
 \RequirePackage[spanish,es-tabla]{babel}
+% Los atajos activos de babel-spanish (< > " ~) rompen TikZ y listings
+% cuando aparecen dentro de argumentos de macros; se desactivan.
+\AtBeginDocument{\shorthandoff{<>}}
 \RequirePackage[T1]{fontenc}
 \RequirePackage[utf8]{inputenc}
 
@@ -197,7 +200,7 @@
   \fi
 }
 \RequirePackage{tikz}
-\usetikzlibrary{shapes.geometric, arrows.meta, positioning, calc, fit}
+\usetikzlibrary{shapes.geometric, arrows.meta, positioning, calc, fit, babel}
 
 % --- Código fuente -----------------------------------------------------------
 \RequirePackage{listings}

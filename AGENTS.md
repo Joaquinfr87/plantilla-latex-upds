@@ -68,6 +68,13 @@ informes nuevos.
 - `\encabezadoCapitulo{TÍTULO}{número}` — encabezado para Conclusiones,
   Referencias y Anexos.
 
+## Guía de figuras y diagramas
+
+Ver [`DIAGRAMAS.md`](DIAGRAMAS.md). Regla resumida: TikZ en línea dentro de
+`\figuraAPA` para diagramas; PDF/PNG exportado para el resto. El preámbulo
+ya carga `\usetikzlibrary{babel}` y aplica `\shorthandoff{<>}` para evitar
+conflictos babel-spanish/TikZ.
+
 ## Convenciones de contenido
 
 - Idioma: español, babel `es-tabla`.

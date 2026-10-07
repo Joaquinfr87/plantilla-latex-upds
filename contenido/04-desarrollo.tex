@@ -40,7 +40,7 @@ nginx.service - A high performance web server
 \figuraAPA{fig:diagrama}{Diagrama de ejemplo}{%
   \begin{tikzpicture}[
       nodo/.style={draw, rounded corners, minimum width=3cm, minimum height=1cm, align=center},
-      flecha/.style={-Stealth, thick}]
+      flecha/.style={->, >=stealth, thick}]
     \node[nodo] (cli) {Cliente};
     \node[nodo, right=of cli] (srv) {Servidor};
     \draw[flecha] (cli) -- (srv) node[midway, above] {HTTP};
