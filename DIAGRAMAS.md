@@ -124,15 +124,6 @@ descripciones generadas por VLM y TikZ generado por LLM (GPT-4o):
   o el paquete `preview`, compilar los diagramas solos y subir los PDFs.
 - Sobre Overleaf: compilar localmente y subir los `.pdf/.md5/.dpth`.
 
-#- ChatGPT/imagen directa: 2.95/5; TikZ desde descripción corregida: 4.65/5.
-  Generar **código TikZ y compilar** vence a pedir imagen al modelo.
-- Tasa de compilación ~131/190 a la primera para GPT-4o; mejora quitando
-  fences (```latex) del output y incluyendo las librerías que referencie.
-- Prompt "con la pregunta/contexto del diagrama" > prompt solo-imagen;
-  one-shot con ejemplo de layout similar mejora más.
-- La revisión humana de la descripción es lo que más mejora el resultado
-  (cuello de botella = descripción, no layout).
-
 ## Fuentes consultadas
 
 - PGF/TikZ Manual: librería `babel` (https://tikz.dev/library-babel).
@@ -147,7 +138,7 @@ descripciones generadas por VLM y TikZ generado por LLM (GPT-4o):
   Generation with Direct Image Synthesis" (LLMs generan TikZ desde
   descripción de texto; prompts con ejemplo de layout mejoran resultados).
 - draw.io docs: generación de diagramas con LLMs (Mermaid/XML), exportación.
-- Medum "Ditch Draw.io": Mermaid como diagrama-como-código versionable.
+- Medium "Ditch Draw.io": Mermaid como diagrama-como-código versionable.
 
 ## Por qué no embeber SVG directo
 
