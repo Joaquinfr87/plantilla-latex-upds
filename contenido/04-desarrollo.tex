@@ -4,4 +4,45 @@
 
 \section{Desarrollo del trabajo}
 
-[Escribir el contenido aquí.]
+\subsection{Figura de ejemplo}
+
+Figura con título y línea FUENTE al estilo APA (usa el logo institucional
+incluido en \texttt{figuras/logo.png}):
+
+\figuraAPA{fig:logo}{Logo institucional UPDS}{logo.png}{Universidad Privada Domingo Savio.}
+
+\subsection{Captura pendiente}
+
+Esta macro muestra un recuadro mientras la captura no exista en
+\texttt{figuras/}; cuando guardes la imagen con ese nombre, aparece
+automáticamente:
+
+\capturaAPA{fig:captura-ejemplo}{Ejemplo de captura de pantalla}{captura-ejemplo.png}{Pantalla de ejemplo del sistema.}
+
+\subsection{Bloque de código}
+
+\begin{lstlisting}[language=bash]
+# Comandos de ejemplo
+sudo apt update
+sudo systemctl restart nginx
+\end{lstlisting}
+
+\subsection{Terminal}
+
+\begin{lstlisting}[style=terminal]
+$ systemctl status nginx
+nginx.service - A high performance web server
+   Active: active (running)
+\end{lstlisting}
+
+\subsection{Diagrama TikZ}
+
+\figuraAPA{fig:diagrama}{Diagrama de ejemplo}{%
+  \begin{tikzpicture}[
+      nodo/.style={draw, rounded corners, minimum width=3cm, minimum height=1cm, align=center},
+      flecha/.style={-Stealth, thick}]
+    \node[nodo] (cli) {Cliente};
+    \node[nodo, right=of cli] (srv) {Servidor};
+    \draw[flecha] (cli) -- (srv) node[midway, above] {HTTP};
+  \end{tikzpicture}%
+}{Elaboración propia.}
