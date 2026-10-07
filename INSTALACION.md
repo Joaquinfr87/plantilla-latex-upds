@@ -15,7 +15,6 @@ sudo apt install --no-install-recommends \
     texlive-pictures \
     texlive-fonts-recommended \
     texlive-bibtex-extra \
-    bibtex \
     latexmk
 ```
 
@@ -26,7 +25,7 @@ Paquetes LaTeX que usa la plantilla y dónde vienen:
 | `babel` español, `geometry`, `helvet` | `texlive-latex-base`, `texlive-fonts-recommended` |
 | `setspace`, `fancyhdr`, `titlesec`, `caption`, `enumitem`, `microtype`, `apacite` | `texlive-latex-recommended` / `texlive-latex-extra` |
 | `tikz`, `graphicx` | `texlive-pictures` |
-| `apacite` (referencias APA) | `texlive-bibtex-extra` + `texlive` |
+| `apacite` (referencias APA) y `bibtex` | `texlive-bibtex-extra` |
 | `latexmk` (compilación automática) | `latexmk` |
 
 Si algún paquete falta al compilar, instálalo puntualmente:
