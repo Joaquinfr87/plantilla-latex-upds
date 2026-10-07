@@ -35,14 +35,83 @@ nginx.service - A high performance web server
    Active: active (running)
 \end{lstlisting}
 
-\subsection{Diagrama TikZ}
+\subsection{Diagrama de arquitectura de red}
 
-\figuraAPA{fig:diagrama}{Diagrama de ejemplo}{%
+Ejemplo de topología cliente–router–servidor (como en los informes reales):
+
+\figuraAPA{fig:red}{Arquitectura de red del laboratorio}{%
   \begin{tikzpicture}[
-      nodo/.style={draw, rounded corners, minimum width=3cm, minimum height=1cm, align=center},
-      flecha/.style={->, >=stealth, thick}]
-    \node[nodo] (cli) {Cliente};
-    \node[nodo, right=of cli] (srv) {Servidor};
-    \draw[flecha] (cli) -- (srv) node[midway, above] {HTTP};
+      nodo/.style={draw, rounded corners, minimum width=2.4cm,
+                   minimum height=0.9cm, align=center, font=\small},
+      nube/.style={draw, ellipse, align=center, font=\small, minimum width=2.2cm},
+      linea/.style={-Stealth, thick}]
+    \node[nodo] (pc) {Cliente};
+    \node[nodo, right=1.8cm of pc] (rtr) {Router\textbackslash 192.168.0.1};
+    \node[nube, right=1.8cm of rtr] (net) {Internet};
+    \node[nodo, below=1.4cm of rtr] (srv) {Servidor Debian};
+    \draw[linea] (pc) -- (rtr);
+    \draw[linea] (rtr) -- (net);
+    \draw[linea] (srv) -- (rtr);
   \end{tikzpicture}%
 }{Elaboración propia.}
+
+\subsection{Diagrama de estados (autómata)}
+
+Ejemplo de máquina de estados finitos con transiciones etiquetadas:
+
+\figuraAPA{fig:fsm}{Diagrama de estados de ejemplo}{%
+  \begin{tikzpicture}[
+      estado/.style={draw, circle, minimum size=1cm, font=\small},
+      linea/.style={-Stealth, thick},
+      nodo/.style={align=center}]
+    \node[estado] (q0) {$q_0$};
+    \node[estado, right=1.8cm of q0] (q1) {$q_1$};
+    \node[estado, accepting, right=1.8cm of q1] (q2) {$q_2$};
+    \draw[linea] (q0) -- node[above] {0} (q1);
+    \draw[linea] (q1) -- node[above] {1} (q2);
+    \draw[linea] (q1) to[bend left] node[above] {0} (q0);
+    % Si se rompe la línea siguiente, el estado inicial desaparece (nodos y
+    % posicionamiento relativos: siempre definir los nodos antes de usarlos).
+  \end{tikzpicture}%
+}{Elaboración propia.}
+
+\subsection{Diagrama de flujo}
+
+\figuraAPA{fig:flujo}{Flujo de decisión de ejemplo}{%
+  \begin{tikzpicture}[
+      paso/.style={draw, rounded corners, minimum width=2.6cm, minimum height=0.9cm, align=center, font=\small},
+      decision/.style={draw, diamond, aspect=2, align=center, font=\small, inner sep=1pt},
+      linea/.style={-Stealth, thick}]
+    \node[paso] (ini) {Inicio};
+    \node[decision, below=1cm of ini] (d) {¿Servicio activo?};
+    \node[paso, below=1cm of d] (ok) {Continuar};
+    \node[paso, right=1.6cm of d] (err) {Reiniciar};
+    \draw[linea] (ini) -- (d);
+    \draw[linea] (d) -- node[right, font=\scriptsize] {sí} (ok);
+    \draw[linea] (d) -- node[above, font=\scriptsize] {no} (err);
+  \end{tikzpicture}%
+}{Elaboración propia.}
+
+\subsection{Casos que "siempre daban error" (prueba del fix)}
+
+El bloque siguiente usa flechas con la sintaxis moderna
+(\texttt{->}, \texttt{>=stealth}) y texto entre nodos. **Antes** del fix
+de babel (\texttt{\\shorthandoff\{<>\}} + librería \texttt{babel}) esto
+fallaba con \texttt{Argument of \\language@active@arg> has an extra \}}.
+Si compila, el fix funciona:
+
+\figuraAPA{fig:fix}{Prueba del fix babel/TikZ}{%
+  \begin{tikzpicture}[nodo/.style={draw, rounded corners, minimum width=2cm,
+                     minimum height=0.8cm, align=center}]
+    \node[nodo] (a) {Antes};
+    \node[nodo, right=2cm of a] (b) {Después};
+    \draw[->, >=stealth, thick] (a) -- node[above, font=\scriptsize]{tcp/80} (b);
+  \end{tikzpicture}%
+}{Elaboración propia.}
+
+\footnotesize{\textbf{Errores que ya no deben aparecer:} tokens activos de
+babel-spanish (\texttt{<}, \texttt{>}) rompiendo estilos de flecha;
+texto de nodos con acentos dentro de argumentos de macro (usar
+\texttt{\\shorthandoff} ya activo); depender de librerías no cargadas
+(automata: cargar \texttt{automata} si se usa \texttt{accepting};
+arrows.meta ya está cargado).}
